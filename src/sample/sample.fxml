@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<?import javafx.scene.control.Label?>
+<GridPane alignment="center" hgap="10" prefHeight="555.0" prefWidth="775.0" style="-fx-background-color: #A52A2A;" stylesheets="@DarkTheme.css" vgap="10" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+    <children>
+        <Pane fx:id="panel1" prefHeight="534.0" prefWidth="755.0" stylesheets="@DarkTheme.css">
+            <children>
+                <TextField fx:id="userTF" layoutX="125.0" layoutY="160.0" prefHeight="40.0" prefWidth="160.0" promptText="user" text="roma" />
+                <TextField fx:id="passwordTF" layoutX="472.0" layoutY="160.0" prefHeight="40.0" prefWidth="153.0" promptText="password" text="0000" />
+                <Button fx:id="login" layoutX="345.0" layoutY="341.0" mnemonicParsing="false" onMouseClicked="#onLogin" text="Вход" /> <!--onKeyPressed="#onLogin"-->
+            </children>
+        </Pane>
+        <Pane id="panel2" fx:id="panel2" prefHeight="534.0" prefWidth="755.0" visible="false">
+            <children>
+                <Label fx:id="handbook" layoutX="0" layoutY="0" text="Справочники"/>
+                <ChoiceBox fx:id="choiceBoxTable" layoutX="0" layoutY="30" prefWidth="150.0" style="-fx-background-color: #1d1d1d; -fx-focus-color: #A52A2A; ;" />
+                <Label fx:id="journal" layoutX="300" layoutY="0" text="Журналы"/>
+                <ChoiceBox fx:id="choiceBoxTableJ" layoutX="300" layoutY="30" prefWidth="150.0" style="-fx-background-color: #1d1d1d; -fx-focus-color: #A52A2A; ;" />
+                <Button fx:id="reportButton" layoutX="600.0" layoutY="30" onMouseClicked="#onReport" text="" prefWidth="110.0" prefHeight="35" visible="true" style="-fx-background-color: #1d1d1d; -fx-border-color: #1d1d1d;" />
+                <Label fx:id="report" layoutX="600" layoutY="0" text="Отчет"/>
+                <!--<Button fx:id="print_choiceTable" layoutX="50" layoutY="80" onMouseClicked="#print_choiceTable" text="Показать таблицу" visible="false"/>-->
+                <TableView fx:id="table" layoutX="100" layoutY="100" prefHeight="300.0" prefWidth="610.0" style="-fx-background-color: #696969;" visible="false" />
+                <Button fx:id="addInTable" layoutX="100.0" layoutY="420.0" onMouseClicked="#onAdd" text="Добавить" prefWidth="120.0" visible="false" />
+                <Button fx:id="updateInTable" layoutX="263.0" layoutY="420.0" onMouseClicked="#onUpdate" text="Изменить" prefWidth="120.0" visible="false" />
+                <Button fx:id="deleteInTable" layoutX="426.0" layoutY="420.0" onMouseClicked="#onDelete" text="Удалить" prefWidth="120.0" visible="false" />
+                <Button fx:id="printTable" layoutX="590.0" layoutY="420.0" onMouseClicked="#onPrint" text="PDF" prefWidth="120.0" visible="false" />
+                <Button fx:id="onBackToLogin" layoutX="680.0" layoutY="480.0" onMouseClicked="#onBackToLogin" text="Назад" />
+            </children>
+        </Pane>
+    </children>
+    <columnConstraints>
+        <ColumnConstraints />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints />
+    </rowConstraints>
+</GridPane>
