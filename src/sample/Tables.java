@@ -6,8 +6,7 @@ public enum Tables {
 //    departments_employees(new String[]{"id", "department_id", "employee_id"}),
     departments_employees(new String[]{"id", "name", "first_name"}),
 //    projects(new String[]{"id", "cost", "date_beg", "date_end", "date_end_real", "department_id"})
-    projects(new String[]{"id", "name","cost", "date_beg", "date_end", "date_end_real"})
-    ;
+    projects(new String[]{"id", "name","cost", "date_beg", "date_end", "date_end_real"});
 
     private String[] namesColumn;
 
