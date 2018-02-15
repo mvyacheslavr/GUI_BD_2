@@ -117,10 +117,8 @@ public class Controller {
 //                        getRowsBySelectedTable.setText(getRowsBySelectedTable.getText()+selectedNameTable);
                         getRowsBySelectedTable();
                     });
-
-
         } catch (ArrayIndexOutOfBoundsException e) {
-
+            e.printStackTrace();
         }
     }
 
@@ -128,11 +126,9 @@ public class Controller {
         selectedNameTable = null;
 
         choiceBoxTable.getItems().removeAll();
-//        choiceBoxTable = null;
 
-        table.getItems().clear();//возможно не нужно
+        table.getItems().clear();
         table.getColumns().clear();
-//        table = null;
         table.setVisible(false);
 
         setButtonVisible(false);
@@ -190,10 +186,8 @@ public class Controller {
                     System.out.println("НЕТ ЗНАЧЕНИЙ" + "  ОШИБКА обработана");
                 }
 
-            }else if (selectedNameTable.equals("projects")) {
+            } else if (selectedNameTable.equals("projects")) {
                 ResultSet resultSet = statement.executeQuery("select projects.id,projects.cost,projects.date_beg,projects.date_end,projects.date_end_real,departments.name from projects join departments on department_id = departments.id ");
-//                                                               select departments_employees.id,departments.name,employees.first_name from  departments_employees join departments on department_id = departments.id join employees on employee_id = employees.id
-//                                                                         projects(new String[]{"id", "cost", "date_beg", "date_end", "date_end_real", "name"})
 
                 rowsOnTable = new ArrayList<>();
                 while (resultSet.next()) {
@@ -210,23 +204,23 @@ public class Controller {
                 } catch (NullPointerException e) {
                     System.out.println("НЕТ ЗНАЧЕНИЙ" + "  ОШИБКА обработана");
                 }
-        }else{
-            ResultSet resultSet = statement.executeQuery("select * from " + nameTable);
+            } else {
+                ResultSet resultSet = statement.executeQuery("select * from " + nameTable);
 
-            rowsOnTable = new ArrayList<>();
-            while (resultSet.next()) {
-                rowsOnTable.add(new TableBD(getResultSetForNamesColumns(namesColumns, resultSet), nameTable));
+                rowsOnTable = new ArrayList<>();
+                while (resultSet.next()) {
+                    rowsOnTable.add(new TableBD(getResultSetForNamesColumns(namesColumns, resultSet), nameTable));
+                }
+                //TEST вывод таблицы в консоль
+                for (TableBD t : rowsOnTable) {
+                    System.out.printf("%s\n", t);
+                }
+                try {
+                    fillTableView(namesColumns, rowsOnTable);
+                } catch (NullPointerException e) {
+                    System.out.println("НЕТ ЗНАЧЕНИЙ" + "  ОШИБКА обработана");
+                }
             }
-            //TEST вывод таблицы в консоль
-            for (TableBD t : rowsOnTable) {
-                System.out.printf("%s\n", t);
-            }
-            try {
-                fillTableView(namesColumns, rowsOnTable);
-            } catch (NullPointerException e) {
-                System.out.println("НЕТ ЗНАЧЕНИЙ" + "  ОШИБКА обработана");
-            }
-        }
 //                }
         } catch (
                 SQLException e) {
@@ -243,7 +237,7 @@ public class Controller {
     }
     private void fillTableView(String[] namesColumn, List rowsOnTable) {
         //удаляем (отчищаем) TableView
-        table.getItems().clear();//возможно не нужно
+        table.getItems().clear();
         table.getColumns().clear();
 
         //отображение данных строк
@@ -436,16 +430,16 @@ public class Controller {
         stageAdd.showAndWait();
     }
     private boolean checkTheFilling(List<TextField> textFields) {
-        boolean chech = true;
+        boolean check = true;
 
         for (TextField tf : textFields) {
             System.out.println(tf.getText());
             if (tf.getText().equals("")) {
-                chech = false;
+                check = false;
                 continue;
             }
         }
-        return chech;
+        return check;
     }
     private StringBuilder getTextFromTextFields(List<TextField> textFields, String choice) {
         StringBuilder data = new StringBuilder();

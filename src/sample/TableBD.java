@@ -14,7 +14,6 @@ public class TableBD {
     public StringProperty NameProperty(int i) {
         return namesColumns[i];
     }
-
     public StringProperty getValueId() {
         return namesColumns[0];
     }

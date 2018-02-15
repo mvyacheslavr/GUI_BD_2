@@ -36,6 +36,7 @@ public class Main extends Application {
     public void init() {
 
         try {
+            //запуск сервера
             Runtime.getRuntime().exec("C:\\pgsql\\start.bat");
         } catch (IOException e) {
             e.printStackTrace();
